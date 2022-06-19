@@ -1,5 +1,8 @@
 package observer;
 
+import observer.Cliente;
+import observer.HBO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +15,7 @@ class ClienteTest {
         Cliente cliente = new Cliente("Raphael");
         cliente.cadastrar(hbo);
         hbo.notificarFilmeNovo();
-        assertEquals(
+        Assertions.assertEquals(
                 "Raphael, temos um novo filme na HBO{filme=Amnesia, gênero=ação}",
                 cliente.getUltimaNotificacao()
         );
@@ -26,11 +29,11 @@ class ClienteTest {
         cliente1.cadastrar(hbo);
         cliente2.cadastrar(hbo);
         hbo.notificarFilmeNovo();
-        assertEquals(
+        Assertions.assertEquals(
                 "Raphael, temos um novo filme na HBO{filme=Amnesia, gênero=ação}",
                 cliente1.getUltimaNotificacao()
         );
-        assertEquals(
+        Assertions.assertEquals(
                 "Evelyn, temos um novo filme na HBO{filme=Amnesia, gênero=ação}",
                 cliente2.getUltimaNotificacao()
         );
@@ -41,7 +44,7 @@ class ClienteTest {
         HBO hbo = new HBO("Amnesia", "ação");
         Cliente cliente = new Cliente("Raphael");
         hbo.notificarFilmeNovo();
-        assertEquals(
+        Assertions.assertEquals(
                 null,
                 cliente.getUltimaNotificacao()
         );
